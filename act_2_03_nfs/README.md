@@ -16,7 +16,7 @@ Para el desarrollo de la práctica utilizaremos 4 máquinas virtuales:
 > **Nota**: la máquina windows 2008 server puede reemplazarse por un windows 7 enterprise. Las versiones professional e inferiores no permiten el servicio NFS.
 
 
-## 1. NFS Windows
+## 1. SO Windows
 
 Para empezar con los preparativos he asignado los nombres a las máquinas como se pide en la práctica y la dirección IP.
 Configuración de windows server 2008
@@ -123,11 +123,21 @@ Tras crear los directorios, montamos los recursos mediante el comando `mount.nfs
 
 ![imagen23](./imagenes/23.png)
 
+> *Nota*: por algún motivo desconocido, el comando `df -hT` no muestra las carpetas public montadas, tanto del servidor windows como del servidor linux. Para comprobar el montaje utilizaremos el comando `mount`.
+
+![imagen24](./imagenes/24.png)
+
+Ahora intentamos acceder a los recursos. Aquí nos encontramos con que los recursos del servidor windows no son accesibles, probablemente debido al usuario con el que estamos intentando acceder. En cambio, los recursos linux sí podemos acceder, por lo que comprobamos que los permisos establecidos funcionan correctamente.
+
+![imagen25](./imagenes/25.png)
 
 ### 2.3 Montaje automático
 
 Para terminar, vamos a configurar el fichero `/etc/fstab` para que los recursos remotos se monten automáticamente durante el inicio del sistema.
 
+Añadimos las líneas correspondientes para todos los recursos, que son las que siguen:
+
+![imagen26](./imagenes/26.png)
 
 
 ## 3. Preguntas
@@ -140,4 +150,8 @@ No,monta las carpetas pero no puede acceder a ellas.
 
 si
 
+
+## 4. Conclusiones
+
+En prácticas anteriores hemos visto el funcionamiento de los recursos compartidos mediante el sistema utilizado por windows SMB/CIFS. En este caso hemos utilizado el sistema de recursos compartidos NFS, cuyo funcionamiento es similar. La ventaja que ofrece es que funciona tanto a nivel de internet como en redes LAN, mientras que el SMB solo funciona en redes LAN. Además, el protocolo NFS ofrece mayor fiabilidad, sobre todo cuando manejamos ficheros de gran tamaño. Por otro lado, la desventaja que tiene es que la configuración, cuanto más complejo es el servicio que queremos configurar, se hace más complicada que en el caso de SMB. 
 

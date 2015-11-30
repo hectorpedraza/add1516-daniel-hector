@@ -16,13 +16,55 @@ Para el desarrollo de la práctica utilizaremos 4 máquinas virtuales:
 > **Nota**: la máquina windows 2008 server puede reemplazarse por un windows 7 enterprise. Las versiones professional e inferiores no permiten el servicio NFS.
 
 
-## 1. SO Windows
+## 1. NFS Windows
 
+Para empezar con los preparativos he asignado los nombres a las máquinas como se pide en la práctica y la dirección IP.
+Configuración de windows server 2008
 
-### 1.1 Servidor NFS Windows
+![](./imagenes/1.png)
+![](./imagenes/2.png)
 
+Configuración de windows 7
 
-### 1.2 Cliente NFS
+![](./imagenes/3.png)
+![](./imagenes/13.png)
+
+### 1.1 Servidor windows
+
+En esta captura estoy instalando el servicio NFS en el windows 2008
+
+![](./imagenes/4.png)
+
+En esta captura estoy compartiendo por NFS las carpetas public y private y asignandoles los permisos.
+
+![](./imagenes/6.png)
+![](./imagenes/10.png)
+
+comando showmount -e 
+
+![](./imagenes/7.png)
+
+### 1.2 Cliente windows
+
+En esta captura estoy instalando el servicio NFS en windows 7
+
+![](./imagenes/8.png)
+
+Servicio en ejecución
+
+![](./imagenes/9.png)
+
+Montando las carpetas desde el cliente
+
+![](./imagenes/12.png)
+
+Carpetas montadas
+
+![](./imagenes/11.png)
+
+Carpetas montadas con public de opensuse
+
+![](./imagenes/13a.png)
 
 
 ## 2. SO OpenSUSE
@@ -88,7 +130,14 @@ Para terminar, vamos a configurar el fichero `/etc/fstab` para que los recursos 
 
 
 
-## 3. Conclusiones
+## 3. Preguntas
 
+ ¿Nuestro cliente GNU/Linux NFS puede acceder al servidor Windows NFS? Comprobarlo.
+
+No,monta las carpetas pero no puede acceder a ellas.
+
+ ¿Nuestro cliente Windows NFS podría acceder al servidor GNU/Linux NFS? Comprobarlo.
+
+si
 
 
